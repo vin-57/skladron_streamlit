@@ -1,4 +1,3 @@
-import asyncio
 import logging
 import queue
 import threading
@@ -8,9 +7,7 @@ from typing import List, NamedTuple, Optional
 
 import av
 import cv2
-import matplotlib.pyplot as plt
 import numpy as np
-import pydub
 import streamlit as st
 from aiortc.contrib.media import MediaPlayer
 
@@ -93,13 +90,11 @@ def main():
     page_func = pages[page_title]
     page_func()
 
-
-    
-
     logger.debug("=== Alive threads ===")
     for thread in threading.enumerate():
         if thread.is_alive():
             logger.debug(f"  {thread.name} ({thread.ident})")
+
 
 def app_object_detection():
     """Object detection demo with MobileNet SSD.
@@ -239,8 +234,6 @@ def app_object_detection():
                 labels_placeholder.table(result)
 
 
-
-
 def app_streaming():
     """Media streamings"""
     MEDIAFILES = {
@@ -352,6 +345,7 @@ def app_streaming():
         "https://github.com/aiortc/aiortc/blob/2362e6d1f0c730a0f8c387bbea76546775ad2fe8/examples/server/server.py#L34. "  # noqa: E501
         "Many thanks to the project."
     )
+
 
 if __name__ == "__main__":
     import os
